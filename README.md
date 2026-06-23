@@ -1,85 +1,85 @@
-# RAG Chatbot — LangChain + Groq + Embeddings locales
+# RAG Chatbot — LangChain + Groq + Local Embeddings
 
-Chatbot de preguntas y respuestas sobre documentos propios usando un pipeline **RAG** (Retrieval-Augmented Generation). El modelo solo responde con información presente en los documentos cargados, evitando alucinaciones.
+Q&A chatbot over your own documents using a RAG (Retrieval-Augmented Generation) pipeline. The model only answers with information present in the loaded documents, avoiding hallucinations.
 
 ## Demo
 
 ```
-🤖  RAG Chatbot  (Groq + embeddings locales)
+RAG Chatbot  (Groq + local embeddings)
 ─────────────────────────────────────────────
-[✓] 1 documento(s) cargado(s)
-[✓] 14 chunks generados
-[✓] Vector store listo
+[v] 1 document(s) loaded
+[v] 14 chunks generated
+[v] Vector store ready
 
-Listo. Escribe tu pregunta ('salir' para terminar).
+Ready. Type your question ('exit' to quit).
 
-Tú → ¿Cuánto tiempo tengo para reportar un incidente de seguridad?
-Bot → Según la política, cualquier incidente de seguridad debe reportarse
-      en menos de 2 horas al equipo de ciberseguridad.
-      [Fuente(s): politica_it.txt]
+You  -> How long do I have to report a security incident?
+Bot  -> According to the policy, any security incident must be reported
+        within 2 hours to the cybersecurity team.
+        [Source(s): it_policy.txt]
 ```
 
-## Cómo funciona
+## How it works
 
 ```
-Documentos .txt  →  Chunks  →  Embeddings locales  →  ChromaDB (en memoria)
-                                                              ↓
-                              Pregunta del usuario → Retrieval (Top-K chunks)
-                                                              ↓
-                                              LLM (Groq/Llama) → Respuesta
+.txt documents  ->  Chunks  ->  Local embeddings  ->  ChromaDB (in memory)
+                                                              |
+                              User question  ->  Retrieval (Top-K chunks)
+                                                              |
+                                              LLM (Groq/Llama)  ->  Answer
 ```
 
-1. **Carga** documentos `.txt` de la carpeta `docs/`
-2. **Divide** el texto en chunks con solapamiento
-3. **Genera embeddings** localmente con `sentence-transformers` (sin coste, sin API)
-4. **Responde** recuperando los chunks más relevantes y pasándolos al LLM como contexto
+1. **Load** `.txt` documents from the `docs/` folder
+2. **Split** text into overlapping chunks
+3. **Generate embeddings** locally with `sentence-transformers` (free, no API)
+4. **Answer** by retrieving the most relevant chunks and passing them as context to the LLM
 
-## Tecnologías
+## Stack
 
-| Librería | Uso |
+| Library | Purpose |
 |---|---|
-| `LangChain` | Orquestación del pipeline RAG |
-| `Groq` | LLM en la nube (Llama 3.1, tier gratuito) |
-| `sentence-transformers` | Embeddings locales (sin API) |
-| `ChromaDB` | Vector store en memoria |
+| `LangChain` | RAG pipeline orchestration |
+| `Groq` | Cloud LLM (Llama 3.1, free tier) |
+| `sentence-transformers` | Local embeddings (no API) |
+| `ChromaDB` | In-memory vector store |
 
-## Instalación
+## Setup
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/rag-chatbot.git
+# 1. Clone the repository
+git clone https://github.com/Cid736/rag-chatbot.git
 cd rag-chatbot
 
-# 2. Crear entorno virtual
+# 2. Create virtual environment
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
 # venv\Scripts\activate         # Windows
 
-# 3. Instalar dependencias
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Configurar API key de Groq (gratis en https://console.groq.com)
+# 4. Configure Groq API key (free at https://console.groq.com)
 cp .env.example .env
-# Edita .env e inserta tu GROQ_API_KEY
+# Edit .env and add your GROQ_API_KEY
 ```
 
-## Uso
+## Usage
 
 ```bash
-# Añade tus documentos .txt en la carpeta docs/
-# ya incluye docs/politica_it.txt como ejemplo
+# Add your .txt documents to the docs/ folder
+# docs/it_policy.txt is included as an example
 
 python main.py
 ```
 
-## Añadir tus propios documentos
+## Adding your own documents
 
-Coloca archivos `.txt` en la carpeta `docs/` y ejecuta `python main.py`. El pipeline los carga automáticamente.
+Drop `.txt` files into the `docs/` folder and run `python main.py`. The pipeline loads them automatically.
 
-## Posibles extensiones
+## Possible extensions
 
-- [ ] Soporte PDF y DOCX
-- [ ] Persistencia del vector store en disco
-- [ ] Interfaz web con Streamlit
-- [ ] Historial de conversación
-- [ ] Swap de Groq por modelo local con Ollama
+- [ ] PDF and DOCX support
+- [ ] Persistent vector store on disk
+- [ ] Web interface with Streamlit
+- [ ] Conversation history
+- [ ] Swap Groq for a local model with Ollama
