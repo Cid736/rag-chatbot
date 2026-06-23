@@ -1,0 +1,23 @@
+POLÍTICA DE SEGURIDAD IT – EMPRESA DEMO S.L.
+Versión 2.1 – Enero 2025
+
+1. ACCESO Y AUTENTICACIÓN
+Todos los empleados deben usar contraseñas de mínimo 12 caracteres con al menos una mayúscula, un número y un símbolo especial. La autenticación multifactor (MFA) es obligatoria para acceder a los sistemas corporativos desde fuera de la red de oficina. Las contraseñas deben renovarse cada 90 días. Está prohibido compartir credenciales entre empleados.
+
+2. USO DE DISPOSITIVOS
+Los equipos corporativos solo pueden usarse para actividades laborales. La instalación de software no autorizado está prohibida y debe solicitarse a través del departamento IT mediante ticket en el sistema de soporte. Los dispositivos móviles personales que accedan a correo corporativo deben registrarse en el MDM (Mobile Device Management).
+
+3. POLÍTICA DE COPIAS DE SEGURIDAD
+Los datos críticos se respaldan diariamente de forma automática en los servidores centrales. Los empleados no deben almacenar información sensible únicamente en sus equipos locales. El departamento IT realiza simulacros de recuperación ante desastres cada trimestre.
+
+4. GESTIÓN DE INCIDENTES
+Cualquier incidente de seguridad debe reportarse en menos de 2 horas al equipo de ciberseguridad mediante el correo seguridad@empresa-demo.com o por teléfono al extensión 1234. Los incidentes se clasifican en tres niveles: bajo (afecta a un usuario), medio (afecta a un equipo o departamento) y crítico (afecta a sistemas de producción o datos sensibles).
+
+5. TELETRABAJO Y ACCESO REMOTO
+El acceso remoto a sistemas internos se realiza exclusivamente mediante VPN corporativa. Está prohibido usar redes Wi-Fi públicas sin VPN activa. Las sesiones de escritorio remoto deben cerrarse al finalizar el trabajo y nunca dejarse abiertas sin supervisión.
+
+6. PROVEEDORES Y TERCEROS
+Los proveedores externos que necesiten acceso a sistemas internos deben firmar un acuerdo de confidencialidad (NDA) y recibir acceso temporal con permisos mínimos necesarios. El acceso se revoca automáticamente al finalizar el proyecto o contrato.
+
+7. SANCIONES
+El incumplimiento de esta política puede derivar en medidas disciplinarias que van desde una advertencia formal hasta la rescisión del contrato, según la gravedad del incidente.
