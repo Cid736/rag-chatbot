@@ -91,7 +91,7 @@ def main():
         print("    Crea un archivo .env con: GROQ_API_KEY=gsk_...")
         sys.exit(1)
 
-    print("\n🤖  RAG Chatbot  (Groq + embeddings locales)")
+    print("\nRAG Chatbot  (Groq + embeddings locales)")
     print("─" * 45)
 
     docs             = load_documents(DOCS_DIR)
