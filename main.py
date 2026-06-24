@@ -112,14 +112,16 @@ def main():
         if query.lower() in ("salir", "exit", "quit", "q"):
             break
 
-        answer  = chain.invoke(query)
-        sources = sorted({
-            os.path.basename(doc.metadata.get("source", "desconocido"))
-            for doc in retriever.invoke(query)
-        })
-
-        print(f"\nBot → {answer}")
-        print(f"      [Fuente(s): {', '.join(sources)}]\n")
+        try:
+            answer  = chain.invoke(query)
+            sources = sorted({
+                os.path.basename(doc.metadata.get("source", "desconocido"))
+                for doc in retriever.invoke(query)
+            })
+            print(f"\nBot → {answer}")
+            print(f"      [Fuente(s): {', '.join(sources)}]\n")
+        except Exception as e:
+            print(f"\n[!] Error al procesar la pregunta: {e}\n")
 
 
 if __name__ == "__main__":
