@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="#english">🇬🇧 English</a> &nbsp;·&nbsp; <a href="#español">🇪🇸 Español</a>
+</p>
+
+---
+
+<a name="english"></a>
+
 # RAG Chatbot — LangChain + Groq + Local Embeddings
 
 Q&A chatbot over your own documents using a RAG (Retrieval-Augmented Generation) pipeline. The model only answers with information present in the loaded documents, avoiding hallucinations.
@@ -46,35 +54,22 @@ Bot  -> According to the policy, any security incident must be reported
 ## Setup
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/Cid736/rag-chatbot.git
 cd rag-chatbot
-
-# 2. Create virtual environment
 python -m venv venv
-source venv/bin/activate        # Linux/Mac
-# venv\Scripts\activate         # Windows
-
-# 3. Install dependencies
+source venv/bin/activate   # Linux/Mac
+# venv\Scripts\activate    # Windows
 pip install -r requirements.txt
-
-# 4. Configure Groq API key (free at https://console.groq.com)
 cp .env.example .env
-# Edit .env and add your GROQ_API_KEY
+# Edit .env and add your GROQ_API_KEY (free at https://console.groq.com)
 ```
 
 ## Usage
 
 ```bash
 # Add your .txt documents to the docs/ folder
-# docs/it_policy.txt is included as an example
-
 python main.py
 ```
-
-## Adding your own documents
-
-Drop `.txt` files into the `docs/` folder and run `python main.py`. The pipeline loads them automatically.
 
 ## Possible extensions
 
@@ -92,3 +87,59 @@ Drop `.txt` files into the `docs/` folder and run `python main.py`. The pipeline
 
 **v0.1.0** — 2026-05-01
 - Initial release: TXT document ingestion, local embeddings, Groq LLM, source citations
+
+---
+
+<a name="español"></a>
+
+# RAG Chatbot — LangChain + Groq + Embeddings Locales
+
+Chatbot de preguntas y respuestas sobre tus propios documentos mediante un pipeline RAG (Retrieval-Augmented Generation). El modelo solo responde con información presente en los documentos cargados, evitando alucinaciones.
+
+## Cómo funciona
+
+1. **Carga** documentos `.txt` de la carpeta `docs/`
+2. **Divide** el texto en fragmentos con solapamiento
+3. **Genera embeddings** localmente con `sentence-transformers` (gratis, sin API)
+4. **Responde** recuperando los fragmentos más relevantes y pasándolos como contexto al LLM
+
+## Stack
+
+| Librería | Función |
+|---|---|
+| `LangChain` | Orquestación del pipeline RAG |
+| `Groq` | LLM en la nube (Llama 3.1, tier gratuito) |
+| `sentence-transformers` | Embeddings locales (sin API) |
+| `ChromaDB` | Base de datos vectorial en memoria |
+
+## Instalación
+
+```bash
+git clone https://github.com/Cid736/rag-chatbot.git
+cd rag-chatbot
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+# venv\Scripts\activate    # Windows
+pip install -r requirements.txt
+cp .env.example .env
+# Edita .env y añade tu GROQ_API_KEY (gratis en https://console.groq.com)
+```
+
+## Uso
+
+```bash
+# Añade tus documentos .txt a la carpeta docs/
+python main.py
+```
+
+## Extensiones posibles
+
+- [ ] Soporte de PDF y DOCX
+- [ ] Base de datos vectorial persistente en disco
+- [ ] Interfaz web con Streamlit
+- [ ] Historial de conversación
+- [ ] Sustituir Groq por un modelo local con Ollama
+
+## Licencia
+
+MIT
