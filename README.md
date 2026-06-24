@@ -83,3 +83,11 @@ Drop `.txt` files into the `docs/` folder and run `python main.py`. The pipeline
 - [ ] Web interface with Streamlit
 - [ ] Conversation history
 - [ ] Swap Groq for a local model with Ollama
+
+## Changelog
+
+**v0.1.1** — 2026-06-24
+- Fix: replace checkmark and box-drawing characters that caused encoding crash on Windows (CP1252)
+
+**v0.1.0** — 2026-05-01
+- Initial release: TXT document ingestion, local embeddings, Groq LLM, source citations

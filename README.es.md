@@ -83,3 +83,11 @@ Coloca archivos `.txt` en la carpeta `docs/` y ejecuta `python main.py`. El pipe
 - [ ] Interfaz web con Streamlit
 - [ ] Historial de conversacion
 - [ ] Swap de Groq por modelo local con Ollama
+
+## Historial de versiones
+
+**v0.1.1** — 2026-06-24
+- Fix: reemplazados caracteres de marca y dibujo de caja que causaban crash de encoding en Windows (CP1252)
+
+**v0.1.0** — 2026-05-01
+- Publicación inicial: ingesta de documentos TXT, embeddings locales, LLM Groq, citas de fuentes
