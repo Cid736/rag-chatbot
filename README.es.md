@@ -87,6 +87,7 @@ Coloca archivos `.txt` en la carpeta `docs/` y ejecuta `python main.py`. El pipe
 ## Historial de versiones
 
 **v0.1.1** — 2026-06-24
+- Fix: los errores del LLM ahora se capturan y reportan en lugar de terminar la sesión abruptamente
 - Fix: reemplazados caracteres de marca y dibujo de caja que causaban crash de encoding en Windows (CP1252)
 
 **v0.1.0** — 2026-05-01

@@ -87,6 +87,7 @@ Drop `.txt` files into the `docs/` folder and run `python main.py`. The pipeline
 ## Changelog
 
 **v0.1.1** — 2026-06-24
+- Fix: LLM errors now caught and reported gracefully instead of crashing the session
 - Fix: replace checkmark and box-drawing characters that caused encoding crash on Windows (CP1252)
 
 **v0.1.0** — 2026-05-01
