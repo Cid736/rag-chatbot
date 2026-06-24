@@ -45,19 +45,19 @@ def load_documents(directory: str):
     if not docs:
         print(f"[!] No se encontraron documentos en '{directory}'.")
         sys.exit(1)
-    print(f"[✓] {len(docs)} documento(s) cargado(s)")
+    print(f"[OK] {len(docs)} documento(s) cargado(s)")
     return docs
 
 
 def build_vectorstore(docs):
     splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
     chunks = splitter.split_documents(docs)
-    print(f"[✓] {len(chunks)} chunks generados")
+    print(f"[OK] {len(chunks)} chunks generados")
 
     print("[~] Cargando modelo de embeddings (primera vez puede tardar)...")
     embeddings = HuggingFaceEmbeddings(model_name=EMBED_MODEL)
     vectorstore = Chroma.from_documents(chunks, embeddings)
-    print("[✓] Vector store listo")
+    print("[OK] Vector store listo")
     return vectorstore
 
 
@@ -92,7 +92,7 @@ def main():
         sys.exit(1)
 
     print("\nRAG Chatbot  (Groq + embeddings locales)")
-    print("─" * 45)
+    print("-" * 45)
 
     docs             = load_documents(DOCS_DIR)
     vectorstore      = build_vectorstore(docs)
