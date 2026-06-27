@@ -92,7 +92,15 @@ python main.py
 
 Automated security reviews are powered by [Claude](https://claude.ai) (Anthropic AI) and run on every significant change to detect vulnerabilities, insecure patterns and dependency risks. Findings are tracked in [`BUGLOG.md`](BUGLOG.md).
 
-**Last review:** 2026-06-25 — 1 issue found (1 critical⚠️ manual action required) — Rotate Groq API key manually.
+**Last review:** 2026-06-28 — 3 issues found (1 critical manual action required, 1 high, 1 low) — code fixes applied; see manual action below.
+
+| Severity | File | Finding | Status |
+|----------|------|---------|--------|
+| CRITICAL ⚠️ | `.env` / git history | Groq API key committed to git history. **Rotate immediately at console.groq.com.** The key cannot be scrubbed by a code fix — you must revoke it. | Manual action required |
+| HIGH | `main.py` | Prompt injection — user input was concatenated directly into the LLM prompt without structural separation. A crafted question could override the system instruction and make the LLM ignore document context. Fixed: context and question are now wrapped in XML-delimited tags (`<contexto>`, `<pregunta>`) with an explicit instruction to ignore embedded directives; max query length enforced (1000 chars). | Patched |
+| LOW | `requirements.txt` | All dependencies were unpinned (no version constraints), allowing silent upgrades to breaking or vulnerable versions. `langchain-huggingface` was missing despite being imported. Fixed: all deps pinned to known-good versions. | Patched |
+
+> **Action required:** Go to [console.groq.com](https://console.groq.com) → API Keys → revoke the exposed key and generate a new one. Update your local `.env`.
 
 Found a vulnerability? Open an issue or contact directly.
 
@@ -152,7 +160,15 @@ python main.py
 
 Las revisiones de seguridad automatizadas utilizan [Claude](https://claude.ai) (Anthropic AI) y se ejecutan en cada cambio significativo para detectar vulnerabilidades, patrones inseguros y riesgos en dependencias. Los hallazgos se registran en [`BUGLOG.md`](BUGLOG.md).
 
-**Última revisión:** 2026-06-25 — 1 vulnerabilidad encontrada (1 crítica⚠️ acción manual requerida) — Rotar Groq API key manualmente.
+**Última revisión:** 2026-06-28 — 3 vulnerabilidades encontradas (1 crítica acción manual requerida, 1 alta, 1 baja) — fixes de código aplicados; ver acción manual abajo.
+
+| Severidad | Archivo | Hallazgo | Estado |
+|-----------|---------|---------|--------|
+| CRÍTICA ⚠️ | `.env` / historial git | API key de Groq commiteada en el historial de git. **Rotarla inmediatamente en console.groq.com.** No puede eliminarse con un fix de código — debes revocarla. | Acción manual requerida |
+| ALTA | `main.py` | Prompt injection — la entrada del usuario se concatenaba directamente en el prompt del LLM sin separación estructural. Una pregunta manipulada podía anular la instrucción del sistema e ignorar el contexto de los documentos. Fix: contexto y pregunta ahora separados con delimitadores XML (`<contexto>`, `<pregunta>`) con instrucción explícita de ignorar directivas embebidas; longitud máxima de consulta aplicada (1000 chars). | Parcheado |
+| BAJA | `requirements.txt` | Todas las dependencias sin versión fijada; `langchain-huggingface` faltante a pesar de importarse. Fix: todas las deps fijadas a versiones conocidas. | Parcheado |
+
+> **Acción requerida:** Ve a [console.groq.com](https://console.groq.com) → API Keys → revoca la clave expuesta y genera una nueva. Actualiza tu `.env` local.
 
 ¿Encontraste una vulnerabilidad? Abre un issue o contacta directamente.
 ## Licencia
